@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/cloud-now/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/cloud-now/static/js/main.492878ec.chunk.js",
-    "main.js.map": "/cloud-now/static/js/main.492878ec.chunk.js.map",
+    "main.js": "/cloud-now/static/js/main.48f8c933.chunk.js",
+    "main.js.map": "/cloud-now/static/js/main.48f8c933.chunk.js.map",
     "runtime-main.js": "/cloud-now/static/js/runtime-main.07963fc8.js",
     "runtime-main.js.map": "/cloud-now/static/js/runtime-main.07963fc8.js.map",
-    "static/js/2.9c6617c1.chunk.js": "/cloud-now/static/js/2.9c6617c1.chunk.js",
-    "static/js/2.9c6617c1.chunk.js.map": "/cloud-now/static/js/2.9c6617c1.chunk.js.map",
+    "static/js/2.34f75ace.chunk.js": "/cloud-now/static/js/2.34f75ace.chunk.js",
+    "static/js/2.34f75ace.chunk.js.map": "/cloud-now/static/js/2.34f75ace.chunk.js.map",
     "static/js/3.42c0cd33.chunk.js": "/cloud-now/static/js/3.42c0cd33.chunk.js",
     "static/js/3.42c0cd33.chunk.js.map": "/cloud-now/static/js/3.42c0cd33.chunk.js.map",
     "index.html": "/cloud-now/index.html",
     "static/css/main.8c8b27cf.chunk.css.map": "/cloud-now/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.9c6617c1.chunk.js.LICENSE.txt": "/cloud-now/static/js/2.9c6617c1.chunk.js.LICENSE.txt"
+    "static/js/2.34f75ace.chunk.js.LICENSE.txt": "/cloud-now/static/js/2.34f75ace.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.07963fc8.js",
-    "static/js/2.9c6617c1.chunk.js",
+    "static/js/2.34f75ace.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.492878ec.chunk.js"
+    "static/js/main.48f8c933.chunk.js"
   ]
 }
