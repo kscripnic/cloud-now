@@ -1,5 +1,6 @@
 import { contextBridge, desktopCapturer, ipcRenderer } from 'electron'
 import Peer from 'peerjs'
+import { keyToggle } from 'robotjs'
 
 export const api = {
   /**
@@ -50,9 +51,20 @@ export const api = {
         conn.on('open', function () {
           // Receive messages
           console.log('conectouuu')
-          conn.send({ dt: '' })
+          conn.send({ dt: '', type: 'ping' })
           conn.on('data', function (data) {
-            conn.send(data)
+            switch (data.type) {
+              case 'keyUp':
+                keyToggle(data.key, 'up')
+                break
+              case 'keyDown':
+                keyToggle(data.key, 'down')
+                break
+              case 'ping':
+              default:
+                conn.send(data)
+                break
+            }
           })
         })
       })
@@ -66,7 +78,7 @@ export const api = {
   },
 
   getWindows: async () => {
-    const sources = await desktopCapturer.getSources({ types: ['window'] })
+    const sources = await desktopCapturer.getSources({ types: ['screen'] })
     return sources
   },
 }

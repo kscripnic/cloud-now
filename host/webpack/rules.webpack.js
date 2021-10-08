@@ -1,8 +1,8 @@
 module.exports = [
-  {
-    test: /\.node$/,
-    use: 'node-loader',
-  },
+  // {
+  //   test: /\.node$/,
+  //   use: 'node-loader',
+  // },
   {
     test: /\.(m?js|node)$/,
     parser: { amd: false },
@@ -17,7 +17,7 @@ module.exports = [
     test: /\.(js|ts|tsx)$/,
     exclude: /node_modules/,
     use: {
-      loader: 'babel-loader'
-    }
-  }
+      loader: 'babel-loader',
+    },
+  },
 ]

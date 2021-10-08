@@ -7,18 +7,27 @@ function App() {
   const [peerId, setPeerId] = useState("");
   const [pingMS, setPingMS] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [globalConn, setGlobalCoon] = useState<Peer.DataConnection | null>(
+    null
+  );
 
   const init = async () => {
-    const peer = new Peer();
+    const peer = new Peer("f5e0f2a2-19ed-42bd-8b70-2c033eacc9c6");
     peer.on("open", function (id) {
       setPeerId(id);
       peer.on("connection", function (conn) {
         console.log("conectouuu");
+        setGlobalCoon(conn);
         conn.on("data", function (data) {
-          setPingMS(moment().diff(data.dt, "milliseconds"));
-          setTimeout(() => {
-            conn.send({ dt: moment().toISOString() });
-          }, 1000);
+          switch (data.type) {
+            case "ping":
+            default:
+              setPingMS(moment().diff(data.dt, "milliseconds"));
+              setTimeout(() => {
+                conn.send({ dt: moment().toISOString(), type: "ping" });
+              }, 1000);
+              break;
+          }
         });
 
         // Send messages
@@ -44,15 +53,26 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <p>{`peerId: ${peerId}`}</p>
-      <p>{`ping: ${pingMS}`}</p>
+      <div
+        style={{ position: "absolute", backgroundColor: "white", zIndex: 2 }}
+      >
+        <p>{`peerId: ${peerId}`}</p>
+        <p>{`ping: ${pingMS}`}</p>
+      </div>
+
       <video
         autoPlay
         ref={videoRef}
         controls
-        style={{ height: 400, width: 600 }}
+        style={{ height: "100%", width: "100%" }}
         onMouseMove={(e) => {
-          console.log(e.movementX);
+          // console.log(e.movementX);
+        }}
+        onKeyDown={(e) => {
+          if (globalConn) globalConn.send({ type: "keyDown", key: e.key });
+        }}
+        onKeyUp={(e) => {
+          if (globalConn) globalConn.send({ type: "keyUp", key: e.key });
         }}
       />
     </div>

@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react'
 import { Container } from './styles'
 
 export function Greetings() {
-  const [peerId, setPeerId] = useState('')
+  const [peerId, setPeerId] = useState('f5e0f2a2-19ed-42bd-8b70-2c033eacc9c6')
   const [windowId, setWindowId] = useState('')
   const [windows, setWindows] = useState<Array<DesktopCapturerSource>>([])
 
   const getWindows = async () => {
     const newWindows = await window.Main.getWindows()
     setWindows(newWindows)
+    setWindowId(newWindows ? newWindows[0].id : '')
   }
 
   useEffect(() => {
