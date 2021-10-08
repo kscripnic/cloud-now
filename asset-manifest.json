@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cloud-now/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/cloud-now/static/js/main.48f8c933.chunk.js",
-    "main.js.map": "/cloud-now/static/js/main.48f8c933.chunk.js.map",
+    "main.js": "/cloud-now/static/js/main.a09b777c.chunk.js",
+    "main.js.map": "/cloud-now/static/js/main.a09b777c.chunk.js.map",
     "runtime-main.js": "/cloud-now/static/js/runtime-main.07963fc8.js",
     "runtime-main.js.map": "/cloud-now/static/js/runtime-main.07963fc8.js.map",
     "static/js/2.34f75ace.chunk.js": "/cloud-now/static/js/2.34f75ace.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.07963fc8.js",
     "static/js/2.34f75ace.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.48f8c933.chunk.js"
+    "static/js/main.a09b777c.chunk.js"
   ]
 }
