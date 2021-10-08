@@ -58,12 +58,20 @@ function App() {
       >
         <p>{`peerId: ${peerId}`}</p>
         <p>{`ping: ${pingMS}`}</p>
+        <p>v1</p>
       </div>
 
       <video
         autoPlay
+        // ver como resolver o muted
+        muted
         ref={videoRef}
-        controls
+        onPause={() => {
+          if (videoRef.current) videoRef.current.play();
+        }}
+        onLoad={() => {
+          if (videoRef.current) videoRef.current.play();
+        }}
         style={{ height: "100%", width: "100%" }}
         onMouseMove={(e) => {
           // console.log(e.movementX);
