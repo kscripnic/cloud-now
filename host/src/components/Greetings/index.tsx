@@ -28,6 +28,7 @@ export function Greetings() {
         value={windowId}
         onChange={e => setWindowId(e.target.value)}
         placeholder="WindowId"
+        // onKeyDown={e => console.log(e.key)}
       />
       <button onClick={() => window.Main.getPeer(peerId, windowId)}>
         Conectar

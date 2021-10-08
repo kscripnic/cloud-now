@@ -1,6 +1,43 @@
 import { contextBridge, desktopCapturer, ipcRenderer } from 'electron'
 import Peer from 'peerjs'
-import { keyToggle } from 'robotjs'
+import { keyToggle, setKeyboardDelay } from 'robotjs'
+
+setKeyboardDelay(0)
+
+const keyToggleMap = (value: string, down: 'down' | 'up') => {
+  switch (value) {
+    case 'Backspace':
+    case 'Delete':
+    case 'Enter':
+    case 'Tab':
+    case 'Escape':
+    case 'Home':
+    case 'End':
+    case 'PageUp':
+    case 'PageDown':
+    case 'Alt':
+    case 'Control':
+    case 'Shift':
+    case 'Space':
+      keyToggle(value.toLowerCase(), down)
+      break
+    case 'ArrowUp':
+      keyToggle('up', down)
+      break
+    case 'ArrowDown':
+      keyToggle('down', down)
+      break
+    case 'ArrowLeft':
+      keyToggle('left', down)
+      break
+    case 'ArrowRight':
+      keyToggle('right', down)
+      break
+    default:
+      keyToggle(value, down)
+      break
+  }
+}
 
 export const api = {
   /**
@@ -51,14 +88,15 @@ export const api = {
         conn.on('open', function () {
           // Receive messages
           console.log('conectouuu')
+
           conn.send({ dt: '', type: 'ping' })
           conn.on('data', function (data) {
             switch (data.type) {
               case 'keyUp':
-                keyToggle(data.key, 'up')
+                keyToggleMap(data.key, 'up')
                 break
               case 'keyDown':
-                keyToggle(data.key, 'down')
+                keyToggleMap(data.key, 'down')
                 break
               case 'ping':
               default:
