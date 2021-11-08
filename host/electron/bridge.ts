@@ -1,8 +1,15 @@
 import { contextBridge, desktopCapturer, ipcRenderer } from 'electron'
 import Peer from 'peerjs'
-import { keyToggle, setKeyboardDelay } from 'robotjs'
+import {
+  keyToggle,
+  setKeyboardDelay,
+  setMouseDelay,
+  mouseToggle,
+  moveMouse,
+} from 'robotjs'
 
 setKeyboardDelay(0)
+setMouseDelay(0)
 
 const keyToggleMap = (value: string, down: 'down' | 'up') => {
   switch (value) {
@@ -97,6 +104,19 @@ export const api = {
                 break
               case 'keyDown':
                 keyToggleMap(data.key, 'down')
+                break
+              case 'mouseDown':
+                if (data.key === 0) mouseToggle('down', 'left')
+                if (data.key === 1) mouseToggle('down', 'middle')
+                if (data.key === 2) mouseToggle('down', 'right')
+                break
+              case 'mouseUp':
+                if (data.key === 0) mouseToggle('up', 'left')
+                if (data.key === 1) mouseToggle('up', 'middle')
+                if (data.key === 2) mouseToggle('up', 'right')
+                break
+              case 'mouseMove':
+                moveMouse(data.key.x, data.key.y)
                 break
               case 'ping':
               default:

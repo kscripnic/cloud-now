@@ -58,7 +58,7 @@ function App() {
       >
         <p>{`peerId: ${peerId}`}</p>
         <p>{`ping: ${pingMS}`}</p>
-        <p>v1</p>
+        <p>v3</p>
       </div>
 
       <video
@@ -74,13 +74,34 @@ function App() {
         }}
         style={{ height: "100%", width: "100%" }}
         onMouseMove={(e) => {
-          // console.log(e.movementX);
+          if (globalConn)
+            globalConn.send({
+              type: "mouseMove",
+              key: {
+                x: e.clientX,
+                y: e.clientY,
+              },
+            });
         }}
         onKeyDown={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
           if (globalConn) globalConn.send({ type: "keyDown", key: e.key });
         }}
         onKeyUp={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
           if (globalConn) globalConn.send({ type: "keyUp", key: e.key });
+        }}
+        onMouseDown={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (globalConn) globalConn.send({ type: "mouseDown", key: e.button });
+        }}
+        onMouseUp={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (globalConn) globalConn.send({ type: "mouseUp", key: e.button });
         }}
       />
     </div>
